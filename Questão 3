@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <locale.h>
+float precoI(float preco);
+
+int main()
+{
+	setlocale(LC_ALL,"");
+    float preco, precoN;
+    printf("Digite o preço do produto: R$");
+    scanf("%f", &preco);
+    precoN = precoI(preco);
+    printf("O preço inflacionado é: R$%.2f\n", precoN);
+    return 0;
+}
+
+float precoI(float preco)
+{
+    if(preco < 100)
+    {
+        return preco * 1.1;
+    }
+    else
+    {
+        return preco * 1.2;
+    }
+}
