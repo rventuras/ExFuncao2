@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main()
+{
+	setlocale(LC_ALL,"");
+    float totalGasto, valorPrestacao;
+    int opcao;
+    printf("Digite o total gasto: R$");
+    scanf("%f", &totalGasto);
+    printf("Opções de pagamento:\n");
+    printf("1 - A vista com 10%% de desconto\n");
+    printf("2 - Em duas vezes (preco da etiqueta)\n");
+    printf("3 - De 3 ate 10 vezes com 3%% de juros ao mês (para compras acima de R$ 100,00)\n");
+    printf("Digite a opcao desejada: ");
+    scanf("%d", &opcao);
+    switch(opcao)
+    {
+        case 1:
+            valorPrestacao = totalGasto * 0.9;
+            printf("O valor total das prestacoes é R$ %.2f\n", valorPrestacao);
+            break;
+        case 2:
+            valorPrestacao = totalGasto / 2;
+            printf("O valor total das prestacoes é 2x de R$ %.2f\n", valorPrestacao);
+            break;
+        case 3:
+            if(totalGasto > 100)
+            {
+                int numPrestacoes;
+                printf("Em quantas vezes quer pagar? (entre 3 e 10): ");
+                scanf("%d", &numPrestacoes);
+                if(numPrestacoes >= 3 && numPrestacoes <= 10)
+                {
+                    float juros = 0.03 * numPrestacoes;
+                    valorPrestacao = (totalGasto * (1 + juros)) / numPrestacoes;
+                    printf("O valor total das prestacoes sera de %ix de R$ %.2f\n", numPrestacoes, valorPrestacao);
+                }
+                else
+                {
+                    printf("Número Inválido.\n");
+                }
+            }
+            else
+            {
+                printf("Parcelamento para compras acima de R$100,00\n");
+            }
+            break;
+        default:
+            printf("Número Inválido.\n");
+            break;
+    }
+    return 0;
+}
