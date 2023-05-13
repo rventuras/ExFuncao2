@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main(){
+	int i;
+	
+	printf("Cod Decimal\tCod Hexa\tCaracter\n");
+    for(int i = 0; i <= 127; i++)
+    {
+        printf("%d\t\t%X\t\t%c\n", i, i, i);
+    }
+}
